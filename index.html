@@ -9,11 +9,11 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            background-color: #0d0118;
+            background-color: #0d0117;
             color: #ffffff;
             display: flex;
             justify-content: center;
@@ -24,314 +24,418 @@
 
         .phone-container {
             width: 100%;
-            max-width: 380px;
-            background: #1d072b;
-            border-radius: 30px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
-            overflow: hidden;
-            border: 4px solid #2d0d42;
-            padding: 25px;
+            max-width: 390px;
+            background-color: #0d0117;
+            min-height: 740px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .header h1 {
-            font-size: 24px;
-            color: #ff007f;
-            font-weight: bold;
-        }
-
-        .header p {
-            font-size: 12px;
-            color: #b3a2be;
-            margin-top: 5px;
-        }
-
-        .form-group {
-            margin-bottom: 18px;
-        }
-
-        .form-group label {
+        /* --- PANTALLA PRINCIPAL (FORMULARIO) --- */
+        .form-panel {
+            width: 90%;
+            background-color: #1a082e;
+            border: 2px solid #32145a;
+            border-radius: 24px;
+            padding: 30px 20px;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.5);
             display: block;
-            font-size: 13px;
-            color: #d1c4db;
-            margin-bottom: 6px;
         }
 
-        .form-group input {
+        .title-main {
+            color: #da0075;
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .subtitle-main {
+            color: #a395b8;
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            color: #a395b8;
+            font-size: 14px;
+            margin-bottom: 8px;
+            padding-left: 5px;
+        }
+
+        .input-group input {
             width: 100%;
-            padding: 12px;
-            background: #2a0f3d;
-            border: 1px solid #4a1f6d;
-            border-radius: 10px;
-            color: #fff;
-            font-size: 15px;
+            background-color: #250f3e;
+            border: 1px solid #441e6e;
+            border-radius: 12px;
+            padding: 15px;
+            color: #ffffff;
+            font-size: 16px;
             outline: none;
             transition: border 0.3s;
         }
 
-        .form-group input:focus {
-            border-color: #ff007f;
+        .input-group input:focus {
+            border-color: #da0075;
         }
 
-        .btn {
+        .input-group input::placeholder {
+            color: #5c4777;
+        }
+
+        /* --- BOTONES --- */
+        .btn-purple {
             width: 100%;
-            padding: 13px;
+            background-color: #4c1d95;
+            color: white;
             border: none;
-            border-radius: 10px;
-            font-size: 14px;
+            border-radius: 12px;
+            padding: 15px;
+            font-size: 15px;
             font-weight: bold;
             cursor: pointer;
-            transition: background 0.3s, transform 0.1s;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
+            transition: background-color 0.2s;
         }
 
-        .btn:active {
-            transform: scale(0.98);
+        .btn-purple:active {
+            background-color: #3b1675;
         }
 
-        .btn-extract {
-            background: #4a1f6d;
-            color: #fff;
-            border: 1px solid #7b33b3;
+        .btn-purple:disabled {
+            background-color: #2b1155;
+            color: #73628a;
+            cursor: not-allowed;
         }
 
-        .btn-extract:hover {
-            background: #5c2787;
-        }
-
-        .btn-generate {
-            background: #ff007f;
-            color: #fff;
-            margin-top: 10px;
-        }
-
-        .btn-generate:hover {
-            background: #e60073;
-        }
-
-        .loading-text {
-            text-align: center;
-            color: #ff007f;
-            font-size: 14px;
-            font-style: italic;
-            margin: 10px 0;
-            display: none;
-        }
-
-        .name-result {
-            background: #004d26;
-            color: #1aff8c;
-            padding: 12px;
-            border-radius: 10px;
-            text-align: center;
+        .btn-pink {
+            width: 100%;
+            background-color: #da0075;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 15px;
+            font-size: 15px;
             font-weight: bold;
-            font-size: 14px;
-            border: 1px solid #008040;
-            display: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-pink:active {
+            background-color: #b50061;
+        }
+
+        /* --- PANTALLA RESULTADO (COMPROBANTE BLANCO) --- */
+        .receipt-panel {
+            width: 92%;
+            background-color: #ffffff;
+            border-radius: 28px;
+            padding: 25px;
+            color: #333333;
+            box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.6);
+            display: none; /* Oculto inicialmente */
+            animation: fadeInUp 0.4s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .icon-check-container {
+            text-align: center;
+            margin-top: 10px;
             margin-bottom: 15px;
         }
 
-        /* Vista del Comprobante Final */
-        .receipt-container {
-            display: none;
-            background: #fff;
-            color: #333;
-            border-radius: 20px;
-            padding: 20px;
-            margin-top: 5px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        .receipt-success-icon {
+        .icon-check {
             width: 50px;
             height: 50px;
-            background: #e6f9f0;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
+            background-color: #e2f7ed;
+            border-radius: 50%;
+            display: inline-flex;
             justify-content: center;
-            margin: 0 auto 15px auto;
-            color: #00b359;
+            align-items: center;
+            color: #00b15e;
             font-size: 24px;
             font-weight: bold;
         }
 
-        .receipt-title {
-            font-size: 14px;
-            color: #666;
+        .receipt-status {
+            text-align: center;
+            color: #333333;
+            font-size: 15px;
+            font-weight: 500;
             margin-bottom: 5px;
         }
 
         .receipt-amount {
-            font-size: 28px;
-            font-weight: bold;
-            color: #111;
+            text-align: center;
+            color: #111111;
+            font-size: 34px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .divider {
+            border-top: 1px dashed #cccccc;
             margin-bottom: 20px;
         }
 
-        .receipt-details {
-            border-top: 1px dashed #ccc;
-            padding-top: 15px;
-            text-align: left;
-        }
-
-        .receipt-row {
+        .data-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 12px;
-            font-size: 13px;
+            margin-bottom: 14px;
+            font-size: 14px;
         }
 
-        .receipt-label {
-            color: #777;
+        .data-label {
+            color: #777777;
+            width: 35%;
         }
 
-        .receipt-value {
-            font-weight: 600;
-            color: #222;
+        .data-value {
+            color: #222222;
+            font-weight: 500;
+            text-align: right;
+            width: 65%;
+            word-wrap: break-word;
         }
 
         .btn-back {
-            background: #333;
-            color: #fff;
-            margin-top: 20px;
+            width: 100%;
+            background-color: #333333;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 15px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 25px;
+        }
+
+        /* --- LOADER/NOTIFICACIÓN INTERNA DE EXTRACCIÓN --- */
+        .info-preview {
+            background-color: #22113a;
+            border-left: 4px solid #da0075;
+            padding: 12px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 20px;
+            font-size: 13px;
+            display: none; /* Se muestra al extraer */
+        }
+        .info-preview p {
+            margin-bottom: 4px;
+        }
+        .info-preview p span {
+            color: #da0075;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-<div class="phone-container" id="formView">
-    <div class="header">
-        <h1>NequiDz-V3</h1>
-        <p>Comprobante Rápido</p>
-    </div>
+<div class="phone-container">
 
-    <div class="form-group">
-        <label for="phone">Número destino</label>
-        <input type="tel" id="phone" placeholder="Ej. 3245306949" maxlength="10">
-    </div>
+    <div id="formPanel" class="form-panel">
+        <div class="title-main">NequiDz-V3</div>
+        <div class="subtitle-main">Comprobante Rápido</div>
 
-    <div class="form-group">
-        <label for="amount">Total a enviar</label>
-        <input type="number" id="amount" placeholder="Ej. 50000">
-    </div>
-
-    <button class="btn btn-extract" id="btnExtract" onclick="extractName()">Extraer nombre del número</button>
-    
-    <div class="loading-text" id="loadingText">Extrayendo...</div>
-    <div class="name-result" id="nameResult">MARILYN BENITEZ ARRIETA</div>
-
-    <button class="btn btn-generate" id="btnGenerate" onclick="generateReceipt()">Generar Comprobante</button>
-</div>
-
-<div class="phone-container" id="receiptView" style="display: none; background: #f3f4f6;">
-    <div class="receipt-container">
-        <div class="receipt-success-icon">✓</div>
-        <div class="receipt-title">¡Listo! Enviaste</div>
-        <div class="receipt-amount" id="rAmount">$0.00</div>
-        
-        <div class="receipt-details">
-            <div class="receipt-row">
-                <span class="receipt-label">A:</span>
-                <span class="receipt-value" id="rName">Nombre</span>
-            </div>
-            <div class="receipt-row">
-                <span class="receipt-label">Número celular:</span>
-                <span class="receipt-value" id="rPhone">0000000000</span>
-            </div>
-            <div class="receipt-row">
-                <span class="receipt-label">Fecha:</span>
-                <span class="receipt-value" id="rDate">00/00/0000</span>
-            </div>
-            <div class="receipt-row">
-                <span class="receipt-label">Hora:</span>
-                <span class="receipt-value" id="rTime">00:00</span>
-            </div>
-            <div class="receipt-row">
-                <span class="receipt-label">Referencia:</span>
-                <span class="receipt-value" id="rRef">M123456</span>
-            </div>
+        <div class="input-group">
+            <label for="numeroDestino">Número destino</label>
+            <input type="number" id="numeroDestino" placeholder="Ej. 3245306949" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxLength="10">
         </div>
+
+        <div class="input-group">
+            <label for="totalEnviar">Total a enviar</label>
+            <input type="number" id="totalEnviar" placeholder="Ej. 50000">
+        </div>
+
+        <div id="infoPreview" class="info-preview">
+            <p><strong>Titular:</strong> <span id="prevNombre">-</span></p>
+            <p><strong>Correo:</strong> <span id="prevCorreo">-</span></p>
+            <p><strong>Documento:</strong> <span id="prevDoc">-</span></p>
+        </div>
+
+        <button type="button" id="btnExtraer" class="btn-purple">Extraer nombre del número</button>
+        <button type="button" id="btnGenerar" class="btn-pink">Generar Comprobante</button>
     </div>
-    <button class="btn btn-back" onclick="showForm()">Crear otro comprobante</button>
+
+    <div id="receiptPanel" class="receipt-panel">
+        <div class="icon-check-container">
+            <div class="icon-check">✓</div>
+        </div>
+        <div class="receipt-status">¡Listo! Enviaste</div>
+        <div id="recMonto" class="receipt-amount">$ 0</div>
+
+        <div class="divider"></div>
+
+        <div class="data-row">
+            <div class="data-label">A:</div>
+            <div id="recNombre" class="data-value">-</div>
+        </div>
+        <div class="data-row">
+            <div class="data-label">Número celular:</div>
+            <div id="recCelular" class="data-value">-</div>
+        </div>
+        <div class="data-row">
+            <div class="data-label">Fecha:</div>
+            <div id="recFecha" class="data-value">-</div>
+        </div>
+        <div class="data-row">
+            <div class="data-label">Hora:</div>
+            <div id="recHora" class="data-value">-</div>
+        </div>
+        <div class="data-row">
+            <div class="data-label">Referencia:</div>
+            <div id="recReferencia" class="data-value">-</div>
+        </div>
+        <div class="data-row">
+            <div class="data-label">Correo:</div>
+            <div id="recCorreo" class="data-value" style="font-size: 12px; color: #666;">-</div>
+        </div>
+        <div class="data-row">
+            <div class="data-label">Documento:</div>
+            <div id="recDoc" class="data-value" style="font-size: 12px; color: #666;">-</div>
+        </div>
+
+        <button type="button" id="btnRegresar" class="btn-back">Crear otro comprobante</button>
+    </div>
+
 </div>
 
 <script>
-    function extractName() {
-        const phone = document.getElementById('phone').value;
-        if (phone.trim() === "") {
-            alert("Por favor, ingresa primero un número destino.");
+    // 1. BASE DE DATOS LOCAL SIMULADA
+    const baseDatosUsuarios = {
+        "3245306949": {
+            nombre: "MARILYN BENITEZ ARRIETA",
+            correo: "marilyn.benitez@gmail.com",
+            documento: "CC 1.003.456.789"
+        },
+        "3247473132": {
+            nombre: "JUAN CARLOS PÉREZ",
+            correo: "juan.perez2026@outlook.com",
+            documento: "CC 1.012.345.678"
+        }
+    };
+
+    // Variable global temporal para guardar la consulta activa
+    let usuarioExtraido = null;
+
+    // 2. LÓGICA DEL BOTÓN EXTRAER
+    document.getElementById('btnExtraer').addEventListener('click', function() {
+        const celular = document.getElementById('numeroDestino').value.trim();
+        const btn = this;
+
+        if (celular.length !== 10) {
+            alert("Socio, ponga un número de celular válido (10 dígitos).");
             return;
         }
 
-        // Oculta el botón y simula la carga
-        document.getElementById('btnExtract').style.display = 'none';
-        document.getElementById('loadingText').style.display = 'block';
+        // Simulación de carga en tiempo real cambiando el texto
+        btn.innerText = "Extrayendo...";
+        btn.disabled = true;
+        document.getElementById('infoPreview').style.display = "none";
 
-        // Demora de 1.5 segundos idéntica al flujo de la imagen
         setTimeout(() => {
-            document.getElementById('loadingText').style.display = 'none';
-            document.getElementById('nameResult').style.display = 'block';
-        }, 1500); 
-    }
+            const usuario = baseDatosUsuarios[celular];
 
-    function generateReceipt() {
-        const phone = document.getElementById('phone').value;
-        const amount = document.getElementById('amount').value;
+            if (usuario) {
+                usuarioExtraido = usuario; // Guardamos los datos
+                
+                // Pintamos los datos en el bloque de vista previa
+                document.getElementById('prevNombre').innerText = usuario.nombre;
+                document.getElementById('prevCorreo').innerText = usuario.correo;
+                document.getElementById('prevDoc').innerText = usuario.documento;
+                
+                // Mostramos el bloque en la interfaz
+                document.getElementById('infoPreview').style.display = "block";
+            } else {
+                usuarioExtraido = null;
+                alert("Número no registrado. Para probar use: 3245306949 o 3247473132");
+            }
 
-        if (phone.trim() === "" || amount.trim() === "") {
-            alert("Por favor completa todos los campos.");
+            // Restauramos el botón
+            btn.innerText = "Extraer nombre del número";
+            btn.disabled = false;
+        }, 1300); // 1.3 segundos de retraso para que se vea real
+    });
+
+    // 3. LÓGICA DE GENERAR COMPROBANTE
+    document.getElementById('btnGenerar').addEventListener('click', function() {
+        const celular = document.getElementById('numeroDestino').value.trim();
+        const monto = document.getElementById('totalEnviar').value.trim();
+
+        if (!celular || !monto) {
+            alert("Llene todos los campos primero, ñero.");
             return;
         }
 
-        const name = "MARILYN BENITEZ ARRIETA";
+        if (!usuarioExtraido) {
+            alert("Primero tiene que darle al botón morado para extraer los datos del propietario.");
+            return;
+        }
 
-        // Formato de moneda local (Pesos Colombianos)
-        const formattedAmount = new Intl.NumberFormat('es-CO', {
+        // Formatear el dinero como $ 235.688
+        const montoFormateado = new Intl.NumberFormat('es-CO', {
             style: 'currency',
             currency: 'COP',
             minimumFractionDigits: 0
-        }).format(amount);
+        }).format(monto).replace("COP", "$");
 
-        // Captura de fecha y hora real del sistema de forma automática
-        const now = new Date();
-        const dateStr = now.toLocaleDateString('es-CO');
-        const timeStr = now.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' });
+        // Obtener fecha y hora en tiempo real local
+        const ahora = new Date();
+        const fechaStr = `${ahora.getDate()}/${ahora.getMonth() + 1}/${ahora.getFullYear()}`;
         
-        // Número de referencia aleatorio autogenerado con patrón 'M'
-        const randomRef = "M" + Math.floor(100000 + Math.random() * 900000);
+        let horas = ahora.getHours();
+        const minutos = ahora.getMinutes().toString().padStart(2, '0');
+        const ampm = horas >= 12 ? 'p. m.' : 'a. m.';
+        horas = horas % 12;
+        horas = horas ? horas : 12; // Formato 12 horas
+        const horaStr = `${horas.toString().padStart(2, '0')}:${minutos} ${ampm}`;
 
-        // Inserta los valores dinámicos en la tarjeta del comprobante
-        document.getElementById('rAmount').innerText = formattedAmount;
-        document.getElementById('rName').innerText = name;
-        document.getElementById('rPhone').innerText = phone;
-        document.getElementById('rDate').innerText = dateStr;
-        document.getElementById('rTime').innerText = timeStr;
-        document.getElementById('rRef').innerText = randomRef;
+        // Generar un código de referencia aleatorio estilo Nequi (Ej: M878045)
+        const refAleatoria = "M" + Math.floor(100000 + Math.random() * 900000);
 
-        // Hace el cambio visual de pantallas
-        document.getElementById('formView').style.display = 'none';
-        document.getElementById('receiptView').style.display = 'block';
-        document.querySelector('.receipt-container').style.display = 'block';
-    }
+        // Inyectar datos al comprobante blanco
+        document.getElementById('recMonto').innerText = montoFormateado;
+        document.getElementById('recNombre').innerText = usuarioExtraido.nombre;
+        document.getElementById('recCelular').innerText = celular;
+        document.getElementById('recFecha').innerText = fechaStr;
+        document.getElementById('recHora').innerText = horaStr;
+        document.getElementById('recReferencia').innerText = refAleatoria;
+        document.getElementById('recCorreo').innerText = usuarioExtraido.correo;
+        document.getElementById('recDoc').innerText = usuarioExtraido.documento;
 
-    function showForm() {
-        // Resetea el estado completo de los campos para un nuevo uso
-        document.getElementById('phone').value = "";
-        document.getElementById('amount').value = "";
-        document.getElementById('nameResult').style.display = 'none';
-        document.getElementById('btnExtract').style.display = 'block';
-        
-        // Regresa a la pantalla principal
-        document.getElementById('receiptView').style.display = 'none';
-        document.getElementById('formView').style.display = 'block';
-    }
+        // Intercambiar pantallas
+        document.getElementById('formPanel').style.display = "none";
+        document.getElementById('receiptPanel').style.display = "block";
+    });
+
+    // 4. BOTÓN REINICIAR (CREAR OTRO)
+    document.getElementById('btnRegresar').addEventListener('click', function() {
+        // Limpiar campos
+        document.getElementById('numeroDestino').value = "";
+        document.getElementById('totalEnviar').value = "";
+        document.getElementById('infoPreview').style.display = "none";
+        usuarioExtraido = null;
+
+        // Volver al formulario
+        document.getElementById('receiptPanel').style.display = "none";
+        document.getElementById('formPanel').style.display = "block";
+    });
 </script>
 
 </body>
 </html>
+
