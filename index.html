@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>NequiDz-V3 - Pro</title>
+    <title>ZavuDash - Gestión de Envíos</title>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background-color: #0b0014;
+            background-color: #0a0104;
             color: #ffffff;
             display: flex;
             justify-content: center;
@@ -22,51 +22,49 @@
             min-height: 100vh;
         }
 
-        /* Contenedor idéntico a la pantalla de un celular moderno */
         .phone-container {
             width: 100%;
             max-width: 412px;
             height: 100vh;
-            min-height: 740px;
-            background-color: #0b0014;
+            min-height: 720px;
+            background-color: #0a0104;
             display: flex;
             flex-direction: column;
             position: relative;
             overflow-y: auto;
-            padding: 20px 16px;
+            padding: 24px 16px;
         }
 
-        /* --- PANTALLA 1: FORMULARIO DE ENTRADA (ESTILO NEQUI) --- */
+        /* --- PANEL PRINCIPAL: ROJO Y NEGRO --- */
         .form-panel {
             width: 100%;
-            background-color: #16002c;
-            border-radius: 24px;
-            padding: 28px 20px;
-            box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.5);
-            border: 1px solid #2e1050;
-            display: block;
+            background-color: #160207;
+            border-radius: 28px;
+            padding: 32px 24px;
+            box-shadow: 0px 10px 35px rgba(0, 0, 0, 0.6);
+            border: 1px solid #360b14;
             margin: auto 0;
+            display: block;
         }
 
         .title-main {
-            color: #da0075;
-            font-size: 30px;
+            color: #ff1e46;
+            font-size: 28px;
             font-weight: 800;
             text-align: center;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
             letter-spacing: -0.5px;
         }
 
         .subtitle-main {
-            color: #8f7fa6;
+            color: #a89498;
             font-size: 13px;
             text-align: center;
-            margin-bottom: 28px;
-            font-weight: 500;
+            margin-bottom: 32px;
         }
 
         .input-group {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .input-group label {
@@ -74,15 +72,14 @@
             color: #ffffff;
             font-size: 14px;
             font-weight: 500;
-            margin-bottom: 8px;
-            padding-left: 2px;
+            margin-bottom: 10px;
         }
 
         .input-group input {
             width: 100%;
-            background-color: #240a3e;
-            border: 1px solid #411e6d;
-            border-radius: 12px;
+            background-color: #24050c;
+            border: 1px solid #4a121e;
+            border-radius: 14px;
             padding: 16px;
             color: #ffffff;
             font-size: 16px;
@@ -91,135 +88,18 @@
         }
 
         .input-group input:focus {
-            border-color: #da0075;
-            box-shadow: 0 0 8px rgba(218, 0, 117, 0.3);
+            border-color: #ff1e46;
+            box-shadow: 0 0 10px rgba(255, 30, 70, 0.25);
         }
 
         .input-group input::placeholder {
-            color: #5d4679;
+            color: #694b51;
         }
 
-        /* Botón Extraer (Morado) */
-        .btn-purple {
+        /* Botones del Sistema */
+        .btn-dark {
             width: 100%;
-            background-color: #3b1464;
-            color: #ffffff;
-            border: none;
-            border-radius: 12px;
-            padding: 15px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-bottom: 12px;
-            transition: background 0.2s;
-        }
-
-        .btn-purple:active { background-color: #2c0e4c; }
-
-        /* Botón Generar (Rosado Fucsia Nequi) */
-        .btn-pink {
-            width: 100%;
-            background-color: #e00073;
-            color: #ffffff;
-            border: none;
-            border-radius: 12px;
-            padding: 15px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .btn-pink:active { background-color: #b8005f; }
-
-        /* --- PANTALLA 2: COMPROBANTE TOTALMENTE CALCADO --- */
-        .receipt-card {
-            width: 100%;
-            background-color: #ffffff;
-            border-radius: 32px;
-            padding: 32px 24px 24px 24px;
-            color: #222222;
-            box-shadow: 0px 12px 36px rgba(0, 0, 0, 0.6);
-            display: none; /* Se activa dinámicamente */
-            margin: auto 0;
-            animation: popUp 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        @keyframes popUp {
-            from { transform: scale(0.92); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        .check-box {
-            text-align: center;
-            margin-bottom: 16px;
-        }
-
-        .check-circle {
-            width: 56px;
-            height: 56px;
-            background-color: #e2f7ed;
-            border-radius: 50%;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .check-circle svg {
-            width: 26px;
-            height: 26px;
-            fill: #00b15e;
-        }
-
-        .receipt-msg {
-            text-align: center;
-            font-size: 15px;
-            color: #444444;
-            font-weight: 400;
-            margin-bottom: 6px;
-        }
-
-        .receipt-val {
-            text-align: center;
-            font-size: 38px;
-            font-weight: 700;
-            color: #111111;
-            margin-bottom: 28px;
-            letter-spacing: -0.8px;
-        }
-
-        .dashed-line {
-            border-top: 1px dashed #dddddd;
-            margin-bottom: 24px;
-        }
-
-        .info-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 18px;
-            font-size: 14px;
-            line-height: 1.4;
-        }
-
-        .info-label {
-            color: #828282;
-            width: 38%;
-            font-weight: 400;
-        }
-
-        .info-value {
-            color: #1c1c1c;
-            font-weight: 500;
-            text-align: right;
-            width: 62%;
-            word-wrap: break-word;
-        }
-
-        /* Botón Inferior Gris Oscuro exacto */
-        .btn-create-other {
-            width: 100%;
-            background-color: #333333;
+            background-color: #380b14;
             color: #ffffff;
             border: none;
             border-radius: 14px;
@@ -227,23 +107,129 @@
             font-size: 15px;
             font-weight: 600;
             cursor: pointer;
-            margin-top: 12px;
+            margin-bottom: 14px;
             transition: background 0.2s;
         }
 
-        .btn-create-other:active { background-color: #222222; }
+        .btn-dark:active { background-color: #24050a; }
 
-        /* Panel interno de previsualización al extraer datos */
+        .btn-red {
+            width: 100%;
+            background-color: #ff1e46;
+            color: #ffffff;
+            border: none;
+            border-radius: 14px;
+            padding: 16px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-red:active { background-color: #d60d31; }
+
+        /* --- PANEL DE RESULTADO / COMPROBANTE --- */
+        .receipt-card {
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 32px;
+            padding: 32px 24px 24px 24px;
+            color: #1a1a1a;
+            box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.7);
+            display: none;
+            margin: auto 0;
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .status-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .status-icon {
+            width: 52px;
+            height: 52px;
+            background-color: #ffe8ec;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .status-icon svg {
+            width: 26px;
+            height: 26px;
+            fill: #ff1e46;
+        }
+
+        .status-title {
+            font-size: 15px;
+            color: #666666;
+            font-weight: 400;
+        }
+
+        .status-amount {
+            font-size: 36px;
+            font-weight: 700;
+            color: #000000;
+            letter-spacing: -0.5px;
+            margin-top: 4px;
+        }
+
+        .divider {
+            border-top: 1px dashed #e0e0e0;
+            margin-bottom: 24px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+
+        .info-label {
+            color: #7a7a7a;
+            width: 40%;
+        }
+
+        .info-value {
+            color: #111111;
+            font-weight: 600;
+            text-align: right;
+            width: 60%;
+        }
+
+        .btn-reset {
+            width: 100%;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            border: none;
+            border-radius: 14px;
+            padding: 16px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 24px;
+        }
+
+        /* Caja de visualización interna */
         .preview-box {
-            background-color: #210839;
-            border-left: 4px solid #e00073;
-            padding: 12px 14px;
+            background-color: #290811;
+            border-left: 4px solid #ff1e46;
+            padding: 14px;
             border-radius: 6px;
             margin-bottom: 20px;
             font-size: 13px;
             display: none;
         }
-        .preview-box p { margin-bottom: 4px; color: #a899c2; }
+        .preview-box p { margin-bottom: 4px; color: #c4b0b4; }
         .preview-box span { color: #ffffff; font-weight: 600; }
     </style>
 </head>
@@ -252,74 +238,74 @@
 <div class="phone-container">
 
     <div id="formPanel" class="form-panel">
-        <div class="title-main">NequiDz-V3</div>
-        <div class="subtitle-main">Comprobante Rápido</div>
+        <div class="title-main">ZavuDash</div>
+        <div class="subtitle-main">Panel de Verificación Rápida</div>
 
         <div class="input-group">
-            <label>Número destino</label>
+            <label>ID o Número de Destino</label>
             <input type="number" id="numeroDestino" placeholder="Ej. 3245306949">
         </div>
 
         <div class="input-group">
-            <label>Total a enviar</label>
+            <label>Monto del Registro</label>
             <input type="number" id="totalEnviar" placeholder="Ej. 50000">
         </div>
 
         <div id="previewBox" class="preview-box">
-            <p>Titular: <span id="vNombre">-</span></p>
-            <p>Correo: <span id="vCorreo">-</span></p>
-            <p>Documento: <span id="vDoc">-</span></p>
+            <p>Titular asignado: <span id="vNombre">-</span></p>
+            <p>Canal de Correo: <span id="vCorreo">-</span></p>
+            <p>Identificación: <span id="vDoc">-</span></p>
         </div>
 
-        <button type="button" id="btnExtraer" class="btn-purple">Extraer nombre del número</button>
-        <button type="button" id="btnGenerar" class="btn-pink">Generar Comprobante</button>
+        <button type="button" id="btnExtraer" class="btn-dark">Extraer información de base de datos</button>
+        <button type="button" id="btnGenerar" class="btn-red">Generar Registro</button>
     </div>
 
     <div id="receiptCard" class="receipt-card">
-        <div class="check-box">
-            <div class="check-circle">
+        <div class="status-header">
+            <div class="status-icon">
                 <svg viewBox="0 0 24 24">
                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                 </svg>
             </div>
+            <div class="status-title">Transacción Procesada</div>
+            <div id="montoFinal" class="status-amount">$ 0</div>
         </div>
-        <div class="receipt-msg">¡Listo! Enviaste</div>
-        <div id="montoFinal" class="receipt-val">$ 0</div>
 
-        <div class="dashed-line"></div>
+        <div class="divider"></div>
 
-        <div class="info-item">
-            <div class="info-label">A:</div>
+        <div class="info-row">
+            <div class="info-label">Asignado a:</div>
             <div id="resNombre" class="info-value">-</div>
         </div>
 
-        <div class="info-item">
-            <div class="info-label">Número celular:</div>
+        <div class="info-row">
+            <div class="info-label">Contacto:</div>
             <div id="resCelular" class="info-value">-</div>
         </div>
 
-        <div class="info-item">
-            <div class="info-label">Fecha:</div>
+        <div class="info-row">
+            <div class="info-label">Fecha de Registro:</div>
             <div id="resFecha" class="info-value">-</div>
         </div>
 
-        <div class="info-item">
-            <div class="info-label">Hora:</div>
+        <div class="info-row">
+            <div class="info-label">Hora Local:</div>
             <div id="resHora" class="info-value">-</div>
         </div>
 
-        <div class="info-item">
-            <div class="info-label">Referencia:</div>
+        <div class="info-row">
+            <div class="info-label">Código Hash Ref:</div>
             <div id="resRef" class="info-value">-</div>
         </div>
 
-        <button type="button" id="btnRecargar" class="btn-create-other">Crear otro comprobante</button>
+        <button type="button" id="btnRecargar" class="btn-reset">Procesar nuevo registro</button>
     </div>
 
 </div>
 
 <script>
-    // Base de datos local para la simulación
+    // Simulación interna de base de datos
     const usuariosLocales = {
         "3245306949": {
             nombre: "MARILYN BENITEZ ARRIETA",
@@ -335,12 +321,12 @@
 
     let datosActivos = null;
 
-    // Lógica botón Extraer
+    // Acción Extraer Datos
     document.getElementById('btnExtraer').addEventListener('click', function() {
         const num = document.getElementById('numeroDestino').value.trim();
-        if(!num) { alert("Socio, ingrese un número primero."); return; }
+        if(!num) { alert("Socio, ingrese un ID o número primero."); return; }
 
-        this.innerText = "Extrayendo...";
+        this.innerText = "Consultando servidor local...";
         this.disabled = true;
         
         setTimeout(() => {
@@ -353,56 +339,56 @@
                 document.getElementById('previewBox').style.display = "block";
             } else {
                 datosActivos = null;
-                alert("Número no encontrado. Use de prueba: 3245306949");
+                alert("ID no encontrado en la simulación. Pruebe con: 3245306949");
             }
-            this.innerText = "Extraer nombre del número";
+            this.innerText = "Extraer información de base de datos";
             this.disabled = false;
-        }, 1100);
+        }, 1000);
     });
 
-    // Lógica botón Generar Comprobante
+    // Acción Generar Comprobante
     document.getElementById('btnGenerar').addEventListener('click', function() {
         const num = document.getElementById('numeroDestino').value.trim();
         const plata = document.getElementById('totalEnviar').value.trim();
 
         if(!num || !plata) {
-            alert("Socio, llene los campos primero.");
+            alert("Por favor, complete todos los campos obligatorios.");
             return;
         }
 
         if(!datosActivos) {
-            alert("Debe extraer el nombre del número antes de generar el comprobante.");
+            alert("Debe ejecutar la extracción de datos primero.");
             return;
         }
 
-        // Formato de moneda COP ($ 235.688)
+        // Formato numérico estándar de dinero
         const plataFormato = new Intl.NumberFormat('es-CO', {
             style: 'currency', currency: 'COP', minimumFractionDigits: 0
         }).format(plata).replace("COP", "$");
 
-        // Datos de tiempo automáticos
+        // Cálculo de fechas dinámicas
         const d = new Date();
         const fStr = `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`;
         let h = d.getHours();
         const m = d.getMinutes().toString().padStart(2, '0');
-        const ampm = h >= 12 ? 'p. m.' : 'a. m.';
+        const ampm = h >= 12 ? 'PM' : 'AM';
         h = h % 12; h = h ? h : 12;
         const hStr = `${h.toString().padStart(2,'0')}:${m} ${ampm}`;
 
-        // Inyección de variables reales en la tarjeta blanca
+        // Inyectar datos en la tarjeta limpia
         document.getElementById('montoFinal').innerText = plataFormato;
         document.getElementById('resNombre').innerText = datosActivos.nombre;
         document.getElementById('resCelular').innerText = num;
         document.getElementById('resFecha').innerText = fStr;
         document.getElementById('resHora').innerText = hStr;
-        document.getElementById('resRef').innerText = "M" + Math.floor(100000 + Math.random() * 900000);
+        document.getElementById('resRef').innerText = "ZV-" + Math.floor(100000 + Math.random() * 900000);
 
-        // Ocultar formulario, mostrar comprobante
+        // Cambiar vista de paneles
         document.getElementById('formPanel').style.display = "none";
         document.getElementById('receiptCard').style.display = "block";
     });
 
-    // Botón reiniciar formulario
+    // Acción Resetear
     document.getElementById('btnRecargar').addEventListener('click', function() {
         document.getElementById('numeroDestino').value = "";
         document.getElementById('totalEnviar').value = "";
